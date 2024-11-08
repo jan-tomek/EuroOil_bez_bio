@@ -129,8 +129,8 @@ stanice_sklad_df.plot(x="gprsDelka", y="gprsSirka", kind="scatter", color="red",
 
 # Vykresli stanice s bio < 1%
 
-stanice_kvalita_nula_ben_df.plot(x="gprsDelka", y="gprsSirka", kind="scatter", color="green", title=f"Benzin 95, bio < 1%", ax = axb)
-stanice_kvalita_nula_naf_df.plot(x="gprsDelka", y="gprsSirka", kind="scatter", color="black", title=f"Nafta, bio < 1%", ax = axn)
+stanice_kvalita_nula_ben_df.plot(x="gprsDelka", y="gprsSirka", kind="scatter", color="green", title=f"Benzin 95, bio < 1% - " + time.strftime("%d.%m.%Y"), ax = axb)
+stanice_kvalita_nula_naf_df.plot(x="gprsDelka", y="gprsSirka", kind="scatter", color="black", title=f"Nafta, bio < 1% - " + time.strftime("%d.%m.%Y"), ax = axn)
 
 # Ulozi
 
