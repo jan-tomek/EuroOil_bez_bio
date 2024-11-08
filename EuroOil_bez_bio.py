@@ -28,6 +28,8 @@ def parse_dms_string(s, out_type=float):
     values = PATTERN.match(s).groupdict()
     return tuple(sum(out_type(values[field] or 0) / out_type(60 ** idx) for idx, field in enumerate(field_names)) for field_names in (LAT_FIELDS, LON_FIELDS))
 
+if not os.path.exists("./data"): os.mkdir("./data")
+
 # Nacte a ulozi data z verejneho API pro cerpaci stanice
 
 response = requests.get("https://srdcovka.eurooil.cz/api/verejne/cerpaci-stanice")
@@ -136,6 +138,8 @@ figb.savefig('stanice_kvalita_ben_nula.png')
 fign.savefig('stanice_kvalita_naf_nula.png')
 
 # Odkopiruje do historie
+
+if not os.path.exists("./data/hist"): os.mkdir("./data/hist")
 
 shutil.copy("data/stanice_kvalita_ben.xlsx", "data/hist/stanice_kvalita_ben_" + time.strftime("%Y%m%d" + ".xlsx"))
 shutil.copy("data/stanice_kvalita_naf.xlsx", "data/hist/stanice_kvalita_naf_" + time.strftime("%Y%m%d" + ".xlsx"))
