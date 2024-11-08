@@ -158,7 +158,7 @@ shutil.copy("stanice_kvalita_naf_nula.png", "data/hist/stanice_kvalita_naf_nula_
 
 ### Ukaze jen ty co jsou zde zakomentovane, ulozi oba ###
 #plt.close(figb)
-plt.close(fign)
+#plt.close(fign)
 
 plt.show()
 
