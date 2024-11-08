@@ -90,25 +90,34 @@ stanice_kvalita_nula_ben_df.to_excel("data/stanice_kvalita_ben_nula.xlsx")
 stanice_kvalita_nula_naf_df = stanice_kvalita_naf_df.query('hodnota < 1')
 stanice_kvalita_nula_naf_df.to_excel("data/stanice_kvalita_naf_nula.xlsx")
 
-# Nacte mapove podklady
-print("Nacitam mapove podklady.", end = "", flush=True)
+# Nacte potrebna data z cache
 
-map_file = "EuroGlobalMap_2024.gpkg"
-# Mnohem pomalejsi, ale cte primo soubor od EU
-#map_file = "zip://euro-global-map-gpkg.zip!euro-global-map-gpkg/EuroGlobalMap_2024.gpkg"
+if os.path.exists('cz_map_cache_world.pkl') and os.path.exists('cz_map_cache_road.pkl'):
+    cz_world = pandas.read_pickle('cz_map_cache_world.pkl') 
+    cz_road = pandas.read_pickle('cz_map_cache_road.pkl') 
+else:
+    # Jinak cte ze zdrojoveho mapoveho souboru
 
-# Nacte podkladove mapy
+    # Nacte mapove podklady
+    print("Nacitam mapove podklady.", end = "", flush=True)
+    map_file = "EuroGlobalMap_2024.gpkg"
+    # Mnohem pomalejsi, ale cte primo soubor od EU
+    #map_file = "zip://euro-global-map-gpkg.zip!euro-global-map-gpkg/EuroGlobalMap_2024.gpkg"
 
-cz_PolbndA = geopandas.read_file(map_file,layer="PolbndA",where="ICC = 'CZ'")
-print(".", end = "", flush=True)
-cz_LandmaskA = geopandas.read_file(map_file,layer="LandmaskA",where="ICC = 'CZ'")
-print(".", end = "", flush=True)
-cz_RoadL = geopandas.read_file(map_file,layer="RoadL",where="ICC = 'CZ' and (COR = 1 or RTT = 14)")
-print(".", end = "", flush=True)
-world = pandas.concat([cz_PolbndA,cz_LandmaskA])
+    # Nacte podkladove mapy
 
-print(".", flush=True)
-print("Generuji mapy.", flush=True)
+    cz_PolbndA = geopandas.read_file(map_file,layer="PolbndA",where="ICC = 'CZ'")
+    print(".", end = "", flush=True)
+    cz_LandmaskA = geopandas.read_file(map_file,layer="LandmaskA",where="ICC = 'CZ'")
+    print(".", end = "", flush=True)
+    cz_road = geopandas.read_file(map_file,layer="RoadL",where="ICC = 'CZ' and (COR = 1 or RTT = 14)")
+    print(".", end = "", flush=True)
+    cz_world = pandas.concat([cz_PolbndA,cz_LandmaskA])
+    cz_world.to_pickle('cz_map_cache_world.pkl') 
+    cz_road.to_pickle('cz_map_cache_road.pkl') 
+
+    print(".", flush=True)
+    print("Generuji mapy.", flush=True)
 
 figb, axb = plt.subplots(figsize=(14,8))
 fign, axn = plt.subplots(figsize=(14,8))
@@ -117,10 +126,10 @@ axn.set_axis_off()
 
 # Vykresli podkladove mapy
 
-world.plot(color="lightgray", edgecolor="black",  alpha=0.5, ax = axb)
-world.plot(color="lightgray", edgecolor="black",  alpha=0.5, ax = axn)
-cz_RoadL.plot(color="red", edgecolor="black",  alpha=0.2, ax = axb)
-cz_RoadL.plot(color="red", edgecolor="black",  alpha=0.2, ax = axn)
+cz_world.plot(color="lightgray", edgecolor="black",  alpha=0.5, ax = axb)
+cz_world.plot(color="lightgray", edgecolor="black",  alpha=0.5, ax = axn)
+cz_road.plot(color="red", edgecolor="black",  alpha=0.2, ax = axb)
+cz_road.plot(color="red", edgecolor="black",  alpha=0.2, ax = axn)
 
 # Vykresli stanice u skladu
 
