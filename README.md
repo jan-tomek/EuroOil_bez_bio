@@ -12,3 +12,5 @@ Součástí repozitory jsou soubory s cache (uložený obsah pracovní paměti) 
 Příklad generované mapy. Větší červená kolečka - čerpací stanice u skladů.
 ![stanice_kvalita_ben_nula_20241108](https://github.com/user-attachments/assets/e217c6e0-a40c-43ab-87a9-17f2e3dea6d6)
 
+
+![stanice_kvalita_ben_nula](https://github.com/jan-tomek/EuroOil_bez_bio/blob/main/stanice_kvalita_ben_nula.png)
