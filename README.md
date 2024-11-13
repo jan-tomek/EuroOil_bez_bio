@@ -5,7 +5,7 @@ Stáhne a v mapě zobrazí čerpací stanice EuroOil s biosložkou pod 1 procent
 
 Používá shodná veřejná data jako aplikace EuroOil Srdcovka.
 
-Potřebné python balíčky nainstaluje **install_packages.py**, testováno s Python 3.12.6 na Windows. Instalace poslední verze pythonu z https://www.python.org/downloads/
+Instalace poslední verze pythonu z https://www.python.org/downloads/ . Valstni program stáhnout odsud z **<> Code**, **Download ZIP**. Rozbalit a potřebné python balíčky nainstaluje **install_packages.py**. Spuštění **EuroOil_bez_bio.py**
 
 Součástí repozitory jsou soubory s cache (uložený obsah pracovní paměti) mapových dat pro Českou republiku - soubory s příponou pkl. Mělo by to stačit pro běh. V případě nefunkčnosti je třeba stáhnout podkladová mapová data EU z adresy https://www.mapsforeurope.org/access-data, kde se zaškrtne Download u EuroGlobalMap,  I agree to the licence terms* a vyplní email. Na email přijde odkaz na stažení souboru. Ze ZIP souboru je vhodné extrahovat soubor EuroGlobalMap_2024.gpkg a umístit ho do stejného adresáře jako skript. Případně lze odkomentovat řádek začínající map_file = "zip://euro-global-map-g..." kdy se čte přímo ZIP archiv, ale je to výrazně pomalejší.
 
