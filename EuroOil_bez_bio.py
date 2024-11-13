@@ -153,11 +153,11 @@ fign.savefig(rdir+'stanice_kvalita_naf_nula.png')
 
 if not os.path.exists(rdir+"data/hist"): os.mkdir(rdir+"data/hist")
 
-shutil.copy(rdir+"data/stanice_kvalita_ben.xlsx", "data/hist/stanice_kvalita_ben_" + time.strftime("%Y%m%d" + ".xlsx"))
-shutil.copy(rdir+"data/stanice_kvalita_naf.xlsx", "data/hist/stanice_kvalita_naf_" + time.strftime("%Y%m%d" + ".xlsx"))
+shutil.copy(rdir+"data/stanice_kvalita_ben.xlsx", rdir+"data/hist/stanice_kvalita_ben_" + time.strftime("%Y%m%d" + ".xlsx"))
+shutil.copy(rdir+"data/stanice_kvalita_naf.xlsx", rdir+"data/hist/stanice_kvalita_naf_" + time.strftime("%Y%m%d" + ".xlsx"))
 
-shutil.copy(rdir+"stanice_kvalita_ben_nula.png", "data/hist/stanice_kvalita_ben_nula_" + time.strftime("%Y%m%d" + ".png"))
-shutil.copy(rdir+"stanice_kvalita_naf_nula.png", "data/hist/stanice_kvalita_naf_nula_" + time.strftime("%Y%m%d" + ".png"))
+shutil.copy(rdir+"stanice_kvalita_ben_nula.png", rdir+"data/hist/stanice_kvalita_ben_nula_" + time.strftime("%Y%m%d" + ".png"))
+shutil.copy(rdir+"stanice_kvalita_naf_nula.png", rdir+"data/hist/stanice_kvalita_naf_nula_" + time.strftime("%Y%m%d" + ".png"))
 
 ### Ukaze jen ty co jsou zde zakomentovane, ulozi oba ###
 #plt.close(figb)
