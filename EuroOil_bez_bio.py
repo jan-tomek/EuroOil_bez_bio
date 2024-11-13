@@ -95,9 +95,9 @@ stanice_kvalita_nula_naf_df.to_excel(rdir+"data/stanice_kvalita_naf_nula.xlsx")
 
 # Nacte potrebna data z cache
 
-if os.path.exists('cz_map_cache_world.pkl') and os.path.exists('cz_map_cache_road.pkl'):
-    cz_world = pandas.read_pickle('cz_map_cache_world.pkl') 
-    cz_road = pandas.read_pickle('cz_map_cache_road.pkl') 
+if os.path.exists(rdir+'cz_map_cache_world.pkl') and os.path.exists(rdir+'cz_map_cache_road.pkl'):
+    cz_world = pandas.read_pickle(rdir+'cz_map_cache_world.pkl') 
+    cz_road = pandas.read_pickle(rdir+'cz_map_cache_road.pkl') 
 else:
     # Jinak cte ze zdrojoveho mapoveho souboru
 
@@ -116,8 +116,8 @@ else:
     cz_road = geopandas.read_file(map_file,layer="RoadL",where="ICC = 'CZ' and (COR = 1 or RTT = 14)")
     print(".", end = "", flush=True)
     cz_world = pandas.concat([cz_PolbndA,cz_LandmaskA])
-    cz_world.to_pickle('cz_map_cache_world.pkl') 
-    cz_road.to_pickle('cz_map_cache_road.pkl') 
+    cz_world.to_pickle(rdir+'cz_map_cache_world.pkl') 
+    cz_road.to_pickle(rdir+'cz_map_cache_road.pkl') 
 
     print(".", flush=True)
     print("Generuji mapy.", flush=True)
