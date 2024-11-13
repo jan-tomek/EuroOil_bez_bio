@@ -1,4 +1,6 @@
 # EuroOil_bez_bio
+test
+
 Stáhne a v mapě zobrazí čerpací stanice EuroOil s biosložkou pod 1 procento u benzinu 95 a nafty. 
 
 Používá shodná veřejná data jako aplikace EuroOil Srdcovka.
